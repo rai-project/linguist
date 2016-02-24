@@ -4,76 +4,29 @@ import (
 	"strings"
 
 	"github.com/generaltso/linguist"
-	"gitlab.com/abduld/wgx/pkg/codecompile/compiletarget/target"
 )
 
 const KeywordThreashold = 3
 
-var keywords struct {
-	CUDA    []string
-	Thrust  []string
-	CppAMP  []string
-	OpenCL  []string
-	OpenACC []string
-}
-
-func hasKeywords(str string, keywords []string) bool {
-	count := 0
-	for _, keyword := range keywords {
-		if strings.Contains(str, keyword) {
-			count++
-			if count >= KeywordThreashold {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-func Language(contents string) target.Language {
-	lang := "cpp"
-
-	lang = linguist.LanguageByContents([]byte(contents), linguist.LanguageHints(""))
-
-	if lang == "C" {
-		src := string(contents)
-		if hasKeywords(src, keywords.Thrust) {
-			lang = "thrust"
-		} else if hasKeywords(src, keywords.CUDA) {
-			lang = "cuda"
-		} else if hasKeywords(src, keywords.OpenACC) {
-			lang = "openacc"
-		} else if hasKeywords(src, keywords.OpenCL) {
-			lang = "opencl"
-		} else if hasKeywords(src, keywords.CppAMP) {
-			lang = "cppamp"
-		} else {
-			lang = "cpp"
-		}
-	}
-
-	return target.MustGetLanguage(lang)
-}
-
-func init() {
-	keywords.Thrust = []string{
+var (
+	ThrustKeywords = []string{
 		"thrust::",
 		"thrust::device_vector",
 		"make_zip_iterator",
 		"thrust::transform",
 	}
-	keywords.OpenACC = []string{
+	OpenACCKeywords = []string{
 		"#pragma ",
 		"pragma acc",
 		"acc kernels ",
 	}
-	keywords.OpenCL = []string{
+	OpenCLKeywords = []string{
 		"__kernel ",
 		"clGetPlatformIDs",
 		"clBuildProgram",
 		"clCreateKernel",
 	}
-	keywords.CUDA = []string{
+	CUDAKeywords = []string{
 		"cudaError_t",
 		"cudaDeviceProp",
 		"cudaMemcpyKind",
@@ -92,4 +45,44 @@ func init() {
 		"<<<",
 		">>>",
 	}
+	// todo: figure out what are common keywords
+	CPPAMPKeywords = []string{}
+)
+
+func hasKeywords(str string, keywords []string) bool {
+	count := 0
+	for _, keyword := range keywords {
+		if strings.Contains(str, keyword) {
+			count++
+			if count >= KeywordThreashold {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func Detect(contents string) string {
+	lang := "CPP"
+
+	lang = linguist.LanguageByContents([]byte(contents), linguist.LanguageHints(""))
+
+	if lang == "C" {
+		src := string(contents)
+		if hasKeywords(src, ThrustKeywords) {
+			lang = "Thrust"
+		} else if hasKeywords(src, CUDAKeywords) {
+			lang = "CUDA"
+		} else if hasKeywords(src, OpenACCKeywords) {
+			lang = "OpenACC"
+		} else if hasKeywords(src, OpenCLKeywords) {
+			lang = "OpenCL"
+		} else if hasKeywords(src, CPPAMPKeywords) {
+			lang = "CPPAMP"
+		} else {
+			lang = "CPP"
+		}
+	}
+
+	return lang
 }

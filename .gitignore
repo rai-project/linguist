@@ -1,0 +1,4 @@
+.srclib-cache/
+.srclib-store/
+vendor/
+rice-box.go
