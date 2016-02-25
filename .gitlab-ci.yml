@@ -32,6 +32,7 @@ test-code:
   script:
     - glide install
     - go get github.com/stretchr/testify
+    - go get github.com/Sirupsen/logrus
     - go test -v $(glide novendor)
     - rm ~/.ssh/id_rsa
 
