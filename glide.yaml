@@ -1,4 +1,4 @@
-package: gitlab.com/abduld/wgx-linguist
+package: src/gitlab.com/abduld/wgx-linguist
 import:
 - package: github.com/GeertJohan/go.rice
 - package: github.com/generaltso/linguist
