@@ -1,4 +1,4 @@
-Copyright (c) 2016, Abdul Dakkak All rights reserved.
+Copyright (c) 2017, Abdul Dakkak All rights reserved.
 
 Developed by: 	Abdul Dakkak
                 IMPACT Group
@@ -34,4 +34,3 @@ CLAIM, DAMAGES OR  OTHER LIABILITY, WHETHER IN  AN ACTION OF
 CONTRACT,  TORT OR  OTHERWISE, ARISING  FROM, OUT  OF OR  IN
 CONNECTION WITH  THE SOFTWARE OR  THE USE OR  OTHER DEALINGS
 WITH THE SOFTWARE.
-
