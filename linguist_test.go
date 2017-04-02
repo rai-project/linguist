@@ -17,5 +17,5 @@ func TestLanguageDetection(t *testing.T) {
 	assert.Equal(t, "Thrust", Detect(thrustSources[0]))
 	assert.Equal(t, "OpenCL", Detect(openclSources[0]))
 	assert.Equal(t, "OpenACC", Detect(openaccSources[0]))
-	assert.Equal(t, "CPP", Detect(cppSources[0]))
+	assert.Equal(t, "C++", Detect(cppSources[0]))
 }

@@ -3,7 +3,7 @@ package linguist
 import (
 	"strings"
 
-	"github.com/generaltso/linguist"
+	linguist "github.com/rai-project/linguist/pkg"
 )
 
 const KeywordThreashold = 3
@@ -63,11 +63,11 @@ func hasKeywords(str string, keywords []string) bool {
 }
 
 func Detect(contents string) string {
-	lang := "CPP"
+	lang := "C++"
 
 	lang = linguist.LanguageByContents([]byte(contents), linguist.LanguageHints(""))
 
-	if lang == "C" {
+	if lang == "C" || lang == "C++" || lang == "Objective-C" {
 		src := string(contents)
 		if hasKeywords(src, ThrustKeywords) {
 			lang = "Thrust"
@@ -80,7 +80,7 @@ func Detect(contents string) string {
 		} else if hasKeywords(src, CPPAMPKeywords) {
 			lang = "CPPAMP"
 		} else {
-			lang = "CPP"
+			lang = "C++"
 		}
 	}
 
