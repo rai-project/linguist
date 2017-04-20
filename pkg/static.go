@@ -1599,6 +1599,7 @@ HLSL:
   type: programming
   extensions:
   - ".hlsl"
+  - ".cginc"
   - ".fx"
   - ".fxh"
   - ".hlsli"
@@ -3411,6 +3412,7 @@ Python:
   - ".lmi"
   - ".py3"
   - ".pyde"
+  - ".pyi"
   - ".pyp"
   - ".pyt"
   - ".pyw"
@@ -3763,7 +3765,6 @@ Ruby:
   - ".fcgi"
   - ".gemspec"
   - ".god"
-  - ".irbrc"
   - ".jbuilder"
   - ".mspec"
   - ".pluginspec"
@@ -3785,6 +3786,7 @@ Ruby:
   - jruby
   - rbx
   filenames:
+  - ".irbrc"
   - ".pryrc"
   - Appraisals
   - Berksfile
@@ -3800,6 +3802,7 @@ Ruby:
   - Mavenfile
   - Podfile
   - Puppetfile
+  - Rakefile
   - Snapfile
   - Thorfile
   - Vagrantfile
@@ -4018,6 +4021,13 @@ Self:
   tm_scope: none
   ace_mode: text
   language_id: 345
+ShaderLab:
+  type: programming
+  extensions:
+  - ".shader"
+  ace_mode: text
+  tm_scope: source.shaderlab
+  language_id: 664257356
 Shell:
   type: programming
   color: "#89e051"

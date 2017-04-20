@@ -1,6 +1,8 @@
 package: github.com/rai-project/linguist
 import:
 - package: github.com/GeertJohan/go.rice
+  subpackages:
+  - embedded
 - package: github.com/jbrukh/bayesian
   version: ~1.0.0
 - package: github.com/shibukawa/git4go
