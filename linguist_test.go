@@ -17,5 +17,13 @@ func TestLanguageDetection(t *testing.T) {
 	assert.Equal(t, "Thrust", Detect(thrustSources[0]))
 	assert.Equal(t, "OpenCL", Detect(openclSources[0]))
 	assert.Equal(t, "OpenACC", Detect(openaccSources[0]))
-	assert.Equal(t, "C++", Detect(cppSources[0]))
+	assert.Equal(t, "CUDA", Detect(`__global__ void vecAdd(float * in1, float * in2, float * out, int len) {
+    //@@ Insert code to implement vector addition here
+    int index = threadIdx.x + blockIdx.x*blockDim.x;
+    if (index < len) {
+        out[index] = in1[index] + in2[index];
+	} else {
+		printf("%d\n", index);
+	}
+}`))
 }

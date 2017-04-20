@@ -6,7 +6,7 @@ import (
 	linguist "github.com/rai-project/linguist/pkg"
 )
 
-const KeywordThreashold = 3
+const KeywordThreashold = 1
 
 var (
 	ThrustKeywords = []string{
@@ -34,14 +34,8 @@ var (
 		"__global__",
 		"__host__",
 		"__constant__",
-		"__shared__",
-		"__inline__",
-		"__align__",
-		"__thread__",
-		"__constant__",
-		"__import__",
-		"__export__",
-		"__location__",
+		"threadIdx",
+		"blockIdx",
 		"<<<",
 		">>>",
 	}
