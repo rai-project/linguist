@@ -22,7 +22,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"gopkg.in/yaml.v1"
+	"gopkg.in/yaml.v2"
 )
 
 var (

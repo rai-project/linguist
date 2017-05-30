@@ -20,7 +20,7 @@ import (
 	"regexp"
 	"strings"
 
-	"gopkg.in/yaml.v1"
+	"gopkg.in/yaml.v2"
 )
 
 // Checks if filename should not be passed to LanguageByFilename.
