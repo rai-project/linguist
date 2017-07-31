@@ -23,16 +23,16 @@ before_script:
 build-code:
   stage: build
   script:
-    - glide install
+    - glide install --force 
     - go build $(glide novendor)
     - rm ~/.ssh/id_rsa
 
 test-code:
   stage: test
   script:
-    - glide install
+    - glide install --force 
     - go get github.com/stretchr/testify
-    - go get github.com/Sirupsen/logrus
+    - go get github.com/sirupsen/logrus
     - go test -v $(glide novendor)
     - rm ~/.ssh/id_rsa
 

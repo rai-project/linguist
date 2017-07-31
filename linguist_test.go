@@ -6,7 +6,7 @@ import (
 	_ "fmt"
 	"testing"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 func TestLanguageDetection(t *testing.T) {
